@@ -14,12 +14,13 @@ paths:
       summary: Returns a specific user by ID.
       parameters:
         - name: id
-        required: true
-        description: The ID of the student.
-        schema:
-          type: integer
-          format: int64
-          minimum: 1
+          in: path
+          required: true
+          description: The ID of the student.
+          schema:
+            type: integer
+            format: int64
+            minimum: 1
       responses:
         '200':
           description: OK (A JSON schema for the student)
