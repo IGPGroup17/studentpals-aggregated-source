@@ -28,7 +28,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: './api/students/schemas/student_info_schema'
+                $ref: '#/api/students/schemas/StudentInfo'
         '400':
           description: The specified student ID is invalid (not a number)
         '404':
@@ -55,7 +55,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/schemas/student_uni_schema'
+                $ref: '#/schemas/StudentUni'
         '400':
           description: The specified student ID is invalid (not a number)
         '404':
@@ -82,7 +82,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/schemas/student_detailed_schema'
+                $ref: '#/schemas/StudentDetailed'
         '400':
           description: The specified student ID is invalid (not a number)
         '404':

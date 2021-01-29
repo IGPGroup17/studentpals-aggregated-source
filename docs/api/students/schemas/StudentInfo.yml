@@ -1,0 +1,14 @@
+components:
+  schemas:
+    StudentInfo:
+      properties:
+        username:
+          type: string
+          example: "johnbernadis93"
+        realname:
+          type: string
+          example: "John Bernadis"
+        age:
+          type: int64
+          format: int64
+          example: 27
