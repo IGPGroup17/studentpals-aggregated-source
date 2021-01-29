@@ -1,6 +1,6 @@
 components:
   schemas:
-    StudentInfo:
+    StudentUni:
       properties:
         email:
           type: string
