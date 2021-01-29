@@ -9,7 +9,7 @@ components:
           type: string
           example: "University of Bath"
         year:
-          type: int64
+          type: integer
           format: int64
           example: 2
         course:

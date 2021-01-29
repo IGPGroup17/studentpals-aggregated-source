@@ -9,7 +9,7 @@ components:
           type: string
           example: "John Bernadis"
         age:
-          type: int64
+          type: integer
           format: int64
           example: 27
         email:
