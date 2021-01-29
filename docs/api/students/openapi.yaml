@@ -55,7 +55,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '../schemas/StudentUni.yml#/StudentUni'
+                $ref: '../students/schemas/StudentUni.yml#/StudentUni'
         '400':
           description: The specified student ID is invalid (not a number)
         '404':
