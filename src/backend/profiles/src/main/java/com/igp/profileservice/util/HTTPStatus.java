@@ -1,5 +1,21 @@
 package com.igp.profileservice.util;
 
+/**
+ * This is kinda semi-stolen from Spring but hey it's good so why not
+ *
+ * Refer to here for more info on the codes: https://en.wikipedia.org/wiki/List_of_HTTP_status_codes
+ *
+ * You'll almost certainly end up using the following:
+ *
+ * 200 - OK
+ * 400 - Bad Request
+ * 403 - Forbidden
+ * 404 - Not Found
+ * 500 - Internal Server Error
+ *
+ * You may use:
+ * 501 - Internal Server Error
+ */
 @SuppressWarnings("unused")
 public enum HTTPStatus {
 
@@ -27,7 +43,6 @@ public enum HTTPStatus {
     PAYMENT_REQUIRED(402, "Payment Required", Series.CLIENT),
     FORBIDDEN(403, "Forbidden", Series.CLIENT),
     NOT_FOUND(404, "Not Found", Series.CLIENT),
-
     METHOD_NOT_ALLOWED(405, "Method Not Allowed", Series.CLIENT),
     NOT_ACCEPTABLE(406, "Not Acceptable", Series.CLIENT),
     PROXY_AUTHENTICATION_REQUIRED(407, "Proxy Authentication Required", Series.CLIENT),
@@ -97,7 +112,7 @@ public enum HTTPStatus {
         HTTPStatus status = getStatusFrom(statusCode);
 
         if (status == null)
-            throw new IllegalArgumentException("Status is null for " + statusCode + "!");
+            throw new IllegalArgumentException("Valid status doesn't exist for " + statusCode + "!");
 
         return status;
     }

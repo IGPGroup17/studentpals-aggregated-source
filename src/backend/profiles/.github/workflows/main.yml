@@ -25,4 +25,4 @@ jobs:
           dst_repo_name: studentpals-aggregated-source
           src_branch: master
           dst_branch: master
-          commit_message: From profile com.igp.profileservice.service.
+          commit_message: From profile service.
