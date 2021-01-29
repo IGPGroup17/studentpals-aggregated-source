@@ -11,7 +11,8 @@ servers:
 paths:
   /students/{id}:
     get:
-      summary: Returns a specific user by ID.
+      summary: /students/{id}
+      description: Returns a specific user by ID.
       parameters:
         - name: id
           in: path
