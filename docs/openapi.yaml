@@ -30,5 +30,4 @@ paths:
                 type: object
                 properties:
                   name: string
-                  format: int64
                   example: "John Benardis"
