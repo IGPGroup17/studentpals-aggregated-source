@@ -89,3 +89,16 @@ paths:
           description: A user with the specified ID was not found
         default:
           description: Unexpected error
+  /students/create/:
+    post:
+      summary: /students/create
+      description: Creates a new student
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '../students/schemas/StudentDetailed.yml#/components/schemas/StudentDetailed'
+      responses:
+        '201':
+          description: Student created
