@@ -29,5 +29,12 @@ paths:
               schema:
                 type: object
                 properties:
-                  name: string
-                  example: "John Benardis"
+                  name:
+                    type: string
+                    example: "John Benardis"
+        '400':
+          description: The specified student ID is invalid (not a number)
+        '404':
+          description: A user with the specified ID was not found
+        default:
+          description: Unexpected error
