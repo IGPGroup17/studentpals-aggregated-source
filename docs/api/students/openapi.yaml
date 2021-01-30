@@ -82,7 +82,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '../students/schemas/StudentDetailed.yml#/components/schemas/StudentDetailed'
+                $ref: '../students/schemas/CreateStudent.yml#/components/schemas/StudentDetailed'
         '400':
           description: The specified student ID is invalid (not a number)
         '404':
