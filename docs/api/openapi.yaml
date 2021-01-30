@@ -1,0 +1,142 @@
+openapi: 3.0.0
+info:
+  title: StudentPals
+  description: IGP Group 17 Internal API Documentation
+  version: 0.0.1
+
+servers:
+  - url: http://student-pals.com/api/v1
+    description: Main (production) entrypoint.
+
+paths:
+  /students/basic/{id}:
+    get:
+      summary: /students/basic/{id}
+      description: Returns basic information on a specific user by ID.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The ID of the student.
+          schema:
+            type: integer
+            format: int64
+            minimum: 1
+      responses:
+        '200':
+          description: OK (A JSON schema for the student)
+          content:
+            application/json:
+              schema:
+                $ref:  '../students/schemas/StudentInfo.yml#/components/schemas/StudentInfo'
+        '400':
+          description: The specified student ID is invalid (not a number)
+        '404':
+          description: A user with the specified ID was not found
+        default:
+          description: Unexpected error
+
+  /students/uni/{id}:
+    get:
+      summary: /students/uni/{id}
+      description: Returns university information on a specific user by ID.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The ID of the student.
+          schema:
+            type: integer
+            format: int64
+            minimum: 1
+      responses:
+        '200':
+          description: OK (A JSON schema for the student)
+          content:
+            application/json:
+              schema:
+                $ref: '../students/schemas/StudentUni.yml#/components/schemas/StudentUni'
+        '400':
+          description: The specified student ID is invalid (not a number)
+        '404':
+          description: A user with the specified ID was not found
+        default:
+          description: Unexpected error
+
+  /students/detailed/{id}:
+    get:
+      summary: /students/detailed/{id}
+      description: Returns detailed information on a specific user by ID.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The ID of the student.
+          schema:
+            type: integer
+            format: int64
+            minimum: 1
+      responses:
+        '200':
+          description: OK (A JSON schema for the student)
+          content:
+            application/json:
+              schema:
+                $ref: '../students/schemas/StudentDetailed.yml#/components/schemas/StudentDetailed'
+        '400':
+          description: The specified student ID is invalid (not a number)
+        '404':
+          description: A user with the specified ID was not found
+        default:
+          description: Unexpected error
+  /students/create:
+    post:
+      summary: /students/create
+      description: Creates a new student
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '../students/schemas/CreateStudent.yml#/components/schemas/CreateStudent'
+      responses:
+        '201':
+          description: Student created
+  /students/update/{id}:
+    post:
+      summary: /students/update/{id}
+      description: Updates a student
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The ID of the student.
+          schema:
+            type: integer
+            format: int64
+            minimum: 1
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '../students/schemas/StudentDetailed.yml#/components/schemas/StudentDetailed'
+      responses:
+        '200':
+          description: Student updated
+  /students/delete/{id}:
+    delete:
+      summary: /students/delete/{id}
+      description: Deletes a student
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The ID of the student.
+          schema:
+            type: integer
+            format: int64
+            minimum: 1
+      responses:
+        '200':
+          description: Student updated

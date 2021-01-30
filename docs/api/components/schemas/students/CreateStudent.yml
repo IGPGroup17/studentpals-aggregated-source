@@ -1,0 +1,35 @@
+components:
+  schemas:
+    CreateStudent:
+      properties:
+        username:
+          type: string
+          example: "johnbernadis93"
+        realname:
+          type: string
+          example: "John Bernadis"
+        age:
+          type: integer
+          format: int64
+          example: 27
+        email:
+          type: string
+          example: "johnbernadis93@gmail.com"
+        university:
+          type: string
+          example: "University of Bath"
+        year:
+          type: integer
+          format: int64
+          example: 2
+        course:
+          type: string
+          example: "Computer Science (BSc) Hons"
+      required:
+        - username
+        - realname
+        - age
+        - email
+        - university
+        - year
+        - course

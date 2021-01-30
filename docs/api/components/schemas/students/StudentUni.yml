@@ -1,0 +1,17 @@
+components:
+  schemas:
+    StudentUni:
+      properties:
+        email:
+          type: string
+          example: "johnbernadis93@gmail.com"
+        university:
+          type: string
+          example: "University of Bath"
+        year:
+          type: integer
+          format: int64
+          example: 2
+        course:
+          type: string
+          example: "Computer Science (BSc) Hons"
