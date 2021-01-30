@@ -98,7 +98,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '../students/schemas/StudentDetailed.yml#/components/schemas/StudentDetailed'
+              $ref: '../students/schemas/StudentDetailed.yml#/components/schemas/CreateStudent'
       responses:
         '201':
           description: Student created
