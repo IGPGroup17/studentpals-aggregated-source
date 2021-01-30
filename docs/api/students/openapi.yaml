@@ -102,3 +102,41 @@ paths:
       responses:
         '201':
           description: Student created
+  /students/update/{id}:
+    post:
+      summary: /students/update/{id}
+      description: Updates a student
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The ID of the student.
+          schema:
+            type: integer
+            format: int64
+            minimum: 1
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '../students/schemas/StudentDetailed.yml#/components/schemas/StudentDetailed'
+      responses:
+        '200':
+          description: Student updated
+  /students/delete/{id}:
+    delete:
+      summary: /students/delete/{id}
+      description: Deletes a student
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The ID of the student.
+          schema:
+            type: integer
+            format: int64
+            minimum: 1
+      responses:
+        '200':
+          description: Student updated
