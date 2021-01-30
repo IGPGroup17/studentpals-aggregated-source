@@ -89,7 +89,7 @@ paths:
           description: A user with the specified ID was not found
         default:
           description: Unexpected error
-  /students/create/:
+  /students/create:
     post:
       summary: /students/create
       description: Creates a new student
