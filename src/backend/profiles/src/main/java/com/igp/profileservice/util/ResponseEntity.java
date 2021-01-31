@@ -25,7 +25,7 @@ public class ResponseEntity<T> {
     }
 
     public static ResponseEntity<String> internalServerError() {
-        return new ResponseEntity<>("Oops we did a fucky-wucky uwu ;33 pwease twy again later ;((", HTTPStatus.INTERNAL_SERVER_ERROR);
+        return new ResponseEntity<>("Internal server error! :/", HTTPStatus.INTERNAL_SERVER_ERROR);
     }
 
     public static ResponseEntity<String> notFound() {
