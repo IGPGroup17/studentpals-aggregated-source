@@ -6,7 +6,7 @@ info:
 
 servers:
   - url: http://student-pals.com/api/v1
-    description: Main (production) entrypoint.
+    description: Main entrypoint.
 
 paths:
   /students/basic/{id}:
@@ -28,7 +28,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref:  '../students/schemas/StudentInfo.yml#/components/schemas/StudentInfo'
+                $ref:  '/components/schemas/students/StudentInfo.yml#/components/schemas/StudentInfo'
         '400':
           description: The specified student ID is invalid (not a number)
         '404':
@@ -55,7 +55,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '../students/schemas/StudentUni.yml#/components/schemas/StudentUni'
+                $ref: '/components/schemas/students/StudentUni.yml#/components/schemas/StudentUni'
         '400':
           description: The specified student ID is invalid (not a number)
         '404':
@@ -82,7 +82,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '../students/schemas/StudentDetailed.yml#/components/schemas/StudentDetailed'
+                $ref: '/components/schemas/students/StudentDetailed.yml#/components/schemas/StudentDetailed'
         '400':
           description: The specified student ID is invalid (not a number)
         '404':
@@ -98,7 +98,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '../students/schemas/CreateStudent.yml#/components/schemas/CreateStudent'
+              $ref: '/components/schemas/students/CreateStudent.yml#/components/schemas/CreateStudent'
       responses:
         '201':
           description: Student created
@@ -120,7 +120,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '../students/schemas/StudentDetailed.yml#/components/schemas/StudentDetailed'
+              $ref: '/components/schemas/students/StudentDetailed.yml#/components/schemas/StudentDetailed'
       responses:
         '200':
           description: Student updated
