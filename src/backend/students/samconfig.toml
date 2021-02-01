@@ -1,0 +1,11 @@
+version = 0.1
+[default]
+[default.deploy]
+[default.deploy.parameters]
+stack_name = "student-service"
+s3_bucket = "aws-sam-cli-managed-default-samclisourcebucket-1f6ujubdt2vyk"
+s3_prefix = "student-service"
+region = "eu-west-1"
+confirm_changeset = true
+capabilities = "CAPABILITY_IAM"
+image_repositories = ["StudentServiceFunction=597624375289.dkr.ecr.eu-west-1.amazonaws.com/student-service"]
