@@ -6,6 +6,8 @@ import java.util.function.Predicate;
 
 public class Case<I, O> {
 
+    private static final Predicate<Boolean> TRUTH_PREDICATE = t -> t.equals(true);
+
     private Predicate<I> matcher;
 
     private O output;
@@ -64,6 +66,6 @@ public class Case<I, O> {
     }
 
     private boolean checkGuards() {
-        return guards.stream().map(Guard::check).allMatch(t -> t.equals(true));
+        return guards.stream().map(Guard::check).allMatch(TRUTH_PREDICATE);
     }
 }
