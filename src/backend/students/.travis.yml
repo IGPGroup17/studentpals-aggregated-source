@@ -18,13 +18,17 @@ environments:
   - AWS_SECRET_ACCESS_KEY = ${AWS_SECRET_ACCESS_KEY}
 
 install:
-  - pip install awscli
-  - pip install aws-sam-cli
+  - pip install -- user awscli
+  - pip install --user aws-sam-cli
 
 script:
+  - sam validate
   - sam build
 
 deploy:
   provider: script
   script: sam deploy --no-confirm-changeset
+  skip_cleanup: true
+  on:
+    branch: master
 
