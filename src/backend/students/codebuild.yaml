@@ -1,0 +1,14 @@
+version: 0.2
+phases:
+  install:
+    runtime-versions:
+      java: corretto11
+  pre_build:
+    commands:
+      - echo Building...
+  build:
+    commands:
+      - sam build
+  artifacts:
+    files:
+      template.yaml
