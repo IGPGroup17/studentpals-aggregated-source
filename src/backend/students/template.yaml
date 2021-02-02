@@ -12,7 +12,6 @@ Resources:
   StudentServiceFunction:
     Type: AWS::Serverless::Function
     Properties:
-      ImageUri: studentservicefunction:java11-maven-v1
       Events:
         BaseStudent:
           Type: Api
@@ -49,6 +48,7 @@ Resources:
           Properties:
             Path: /v1/students/update/{id}
             Method: post
+      ImageUri: studentservicefunction:java11-maven-v1
     Metadata:
       DockerTag: java11-maven-v1
       DockerContext: ./StudentServiceFunction
