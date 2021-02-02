@@ -9,6 +9,7 @@ phases:
       - docker --version
   build:
     commands:
+      - sam validate
       - sam build
 
 artifacts:

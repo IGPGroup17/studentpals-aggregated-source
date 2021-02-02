@@ -1,0 +1,54 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: 'Lambda function for student-service
+
+  '
+Globals:
+  Function:
+    Timeout: 20
+Resources:
+  StudentServiceFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      PackageType: Image
+      Events:
+        BaseStudent:
+          Type: Api
+          Properties:
+            Path: /v1/students
+            Method: any
+        BasicStudent:
+          Type: Api
+          Properties:
+            Path: /v1/students/basic/{id}
+            Method: get
+        CreateStudent:
+          Type: Api
+          Properties:
+            Path: /v1/students
+            Method: post
+        DeleteStudent:
+          Type: Api
+          Properties:
+            Path: /v1/students/delete/{id}
+            Method: delete
+        DetailedStudent:
+          Type: Api
+          Properties:
+            Path: /v1/students/detailed/{id}
+            Method: get
+        UniStudent:
+          Type: Api
+          Properties:
+            Path: /v1/students/uni/{id}
+            Method: get
+        UpdateStudent:
+          Type: Api
+          Properties:
+            Path: /v1/students/update/{id}
+            Method: post
+      ImageUri: studentservicefunction:java11-maven-v1
+    Metadata:
+      DockerTag: java11-maven-v1
+      DockerContext: ./StudentServiceFunction
+      Dockerfile: Dockerfile
