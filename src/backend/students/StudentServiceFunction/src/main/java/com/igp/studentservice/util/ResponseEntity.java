@@ -63,8 +63,6 @@ public class ResponseEntity<T> {
 
     @Override
     public String toString() {
-        JsonElement element = GSON.toJsonTree(object);
-        element.getAsJsonObject().addProperty("code", status.getCode());
-        return GSON.toJson(element);
+        return GSON.toJson(object);
     }
 }
