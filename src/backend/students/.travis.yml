@@ -1,6 +1,6 @@
 language: java
 
-sudo: false # For faster builds
+sudo: true # For faster builds
 
 os: linux
 
