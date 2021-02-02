@@ -6,6 +6,7 @@ phases:
       java: corretto11
   pre_build:
     commands:
+      - docker --version
       - echo Pre-Build
       - sam local start-api
   build:
