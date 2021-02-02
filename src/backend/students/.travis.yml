@@ -1,0 +1,29 @@
+language: java
+
+sudo: false # For faster builds
+
+os: linux
+
+dist: xenial  # Ubuntu
+
+jdk:
+  - openjdk11
+
+branches:
+  only:
+  - master
+
+install:
+  - pip install awscli
+  - pip install aws-sam-cli
+
+script:
+  - sam validate
+  - sam build
+
+deploy:
+  provider: script
+  script: sam deploy --template-file template.yaml
+
+environments:
+  - AWS_ACCESS_KEY_ID = ${}

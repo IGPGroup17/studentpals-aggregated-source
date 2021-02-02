@@ -21,27 +21,27 @@ public class Handler implements RequestHandler<APIGatewayProxyRequestEvent, APIG
     private ResponseEntity<?> routeRequest(APIGatewayProxyRequestEvent event, Context context, StudentService service) {
         return new PatternMatcher<String, ResponseEntity<?>>()
                 .defineCase(
-                        "/students/basic/{id}", service.getBasicStudent(event, context),
+                        "/v1/students/basic/{id}", service.getBasicStudent(event, context),
                         () -> event.getHttpMethod().equals("GET"))
 
                 .defineCase(
-                        "/students/create", service.createStudent(event, context),
+                        "/v1/students/create", service.createStudent(event, context),
                         () -> event.getHttpMethod().equals("POST"))
 
                 .defineCase(
-                        "/students/delete/{id}", service.deleteStudent(event, context),
+                        "/v1/students/delete/{id}", service.deleteStudent(event, context),
                         () -> event.getHttpMethod().equals("DELETE"))
 
                 .defineCase(
-                        "/students/detailed/{id}", service.getDetailedStudent(event, context),
+                        "/v1/students/detailed/{id}", service.getDetailedStudent(event, context),
                         () -> event.getHttpMethod().equals("GET"))
 
                 .defineCase(
-                        "/students/uni/{id}", service.getUniStudent(event, context),
+                        "/v1/students/uni/{id}", service.getUniStudent(event, context),
                         () -> event.getHttpMethod().equals("GET"))
 
                 .defineCase(
-                        "/students/update/{id}", service.updateStudent(event, context),
+                        "/v1/students/update/{id}", service.updateStudent(event, context),
                         () -> event.getHttpMethod().equals("POST"))
 
                 .defaultCase(ResponseEntity.notFound())

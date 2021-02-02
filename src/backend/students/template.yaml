@@ -14,7 +14,7 @@ Resources:
     Properties:
       PackageType: Image
       Events:
-        StudentService:
+        BaseStudent:
           Type: Api
           Properties:
             Path: /v1/students
