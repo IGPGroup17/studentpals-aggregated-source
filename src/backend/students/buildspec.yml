@@ -7,10 +7,11 @@ phases:
   pre_build:
     commands:
       - echo Pre-Build
-      - sudo sam local start-api
+      - sam local start-api
   build:
     commands:
       - echo Build
+      - sam validate
       - sam build
 
 artifacts:
