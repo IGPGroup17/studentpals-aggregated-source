@@ -18,8 +18,8 @@ environments:
   - AWS_SECRET_ACCESS_KEY = ${AWS_SECRET_ACCESS_KEY}
 
 install:
-  - pip3 install awscli
-  - pip3 install aws-sam-cli
+  - pip install awscli
+  - pip install aws-sam-cli
 
 script:
   - sam build
