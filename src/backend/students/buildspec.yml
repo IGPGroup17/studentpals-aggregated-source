@@ -6,6 +6,7 @@ phases:
       java: corretto11
   pre_build:
     commands:
+      - ls -a
       - docker --version
   build:
     commands:

@@ -12,8 +12,8 @@ Resources:
   StudentServiceFunction:
     Type: AWS::Serverless::Function
     Properties:
-      ImageUri: studentservicefunction:java11-maven-v1
-      PackageType: Image
+      ImageUri: "studentservicefunction:java11-maven-v1"
+      PackageType: "Image"
       Events:
         BaseStudent:
           Type: Api
