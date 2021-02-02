@@ -8,6 +8,7 @@ import java.util.function.Predicate;
 /**
  * An extremely btec version of scala's pattern matching. I wanted to use scala itself but AWS wouldn't let me :(
  */
+@SuppressWarnings("unchecked") // warning - this isn't safe! honestly i cba to fix it bc type erasures a bitch - please dont fuck it up kthanks
 public class PatternMatcher<I, O> {
 
     private final Set<Case<I, O>> cases;
@@ -18,12 +19,10 @@ public class PatternMatcher<I, O> {
         this.cases = new HashSet<>();
     }
 
-    @SuppressWarnings("unchecked") // this isn't safe - please don't fuck it up kthanks
     public PatternMatcher<I, O> defineCase(I input, O output, Guard... guards) {
         return defineCase((Case<I, O>) Case.constant(input).then(output).withGuards(guards));
     }
 
-    @SuppressWarnings("unchecked") // this isn't safe - please don't fuck it up kthanks
     public PatternMatcher<I, O> defineCase(Predicate<I> matcher, O output, Guard... guards) {
         return defineCase((Case<I, O>) Case.of(matcher).then(output).withGuards(guards));
     }

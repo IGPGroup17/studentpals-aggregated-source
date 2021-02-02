@@ -13,17 +13,18 @@ branches:
   only:
   - master
 
+environments:
+  - AWS_ACCESS_KEY_ID = ${AWS_ACCESS_KEY_ID}
+  - AWS_SECRET_ACCESS_KEY = ${AWS_SECRET_ACCESS_KEY}
+
 install:
-  - pip install awscli
-  - pip install aws-sam-cli
+  - pip3 install awscli
+  - pip3 install aws-sam-cli
 
 script:
-  - sam validate
   - sam build
 
 deploy:
   provider: script
-  script: sam deploy --template-file template.yaml
+  script: sam deploy --no-confirm-changeset
 
-environments:
-  - AWS_ACCESS_KEY_ID = ${}
