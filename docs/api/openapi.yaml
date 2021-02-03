@@ -324,17 +324,17 @@ components:
           type: string
           example: "Computer Science (BSc) Hons"
       # ---------------- ORGANISERS ----------------
-    CreateOrganiser:
-      allOf:
-        - $ref: '#/components/schemas/'
-      required:
-        - username
-        - realname
-        - age
-        - email
-        - university
-        - year
-        - course
+    # CreateOrganiser:
+    #   allOf:
+    #     - $ref: '#/components/schemas/'
+    #   required:
+    #     - username
+    #     - realname
+    #     - age
+    #     - email
+    #     - university
+    #     - year
+    #     - course
     OrganiserDetailed:
       properties:
         username:
