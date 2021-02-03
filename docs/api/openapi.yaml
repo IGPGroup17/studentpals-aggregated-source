@@ -5,14 +5,15 @@ info:
   version: 0.0.1
 
 servers:
-  - url: http://student-pals.com/api/v1
-    description: Main entrypoint.
+  - url: https://xjsdyxh2gd.execute-api.eu-west-1.amazonaws.com/Prod
+    description: Students Service
 
 paths:
+  # ---------------- STUDENTS ----------------
   /students/basic/{id}:
     get:
       summary: /students/basic/{id}
-      description: Returns basic information on a specific user by ID.
+      description: Returns basic information on a specific student by Profile ID.
       parameters:
         - name: id
           in: path
@@ -28,18 +29,17 @@ paths:
           content:
             application/json:
               schema:
-                $ref:  '/components/schemas/students/StudentInfo.yml#/components/schemas/StudentInfo'
+                $ref:  '#/components/schemas/StudentBasic'
         '400':
-          description: The specified student ID is invalid (not a number)
+          description: The specified Profile ID is invalid (not a number)
         '404':
-          description: A user with the specified ID was not found
+          description: A user with the specified Profile ID was not found
         default:
           description: Unexpected error
-
   /students/uni/{id}:
     get:
       summary: /students/uni/{id}
-      description: Returns university information on a specific user by ID.
+      description: Returns university information on a specific user by Profile ID.
       parameters:
         - name: id
           in: path
@@ -55,14 +55,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '/components/schemas/students/StudentUni.yml#/components/schemas/StudentUni'
+                $ref: '#/components/schemas/StudentUni'
         '400':
           description: The specified student ID is invalid (not a number)
         '404':
           description: A user with the specified ID was not found
         default:
           description: Unexpected error
-
   /students/detailed/{id}:
     get:
       summary: /students/detailed/{id}
@@ -82,7 +81,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '/components/schemas/students/StudentDetailed.yml#/components/schemas/StudentDetailed'
+                $ref: '#/components/schemas/StudentDetailed'
         '400':
           description: The specified student ID is invalid (not a number)
         '404':
@@ -98,7 +97,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '/components/schemas/students/CreateStudent.yml#/components/schemas/CreateStudent'
+              $ref: '#/components/schemas/CreateStudent'
       responses:
         '201':
           description: Student created
@@ -120,7 +119,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '/components/schemas/students/StudentDetailed.yml#/components/schemas/StudentDetailed'
+              $ref: '#/components/schemas/StudentDetailed'
       responses:
         '200':
           description: Student updated
@@ -140,3 +139,223 @@ paths:
       responses:
         '200':
           description: Student updated
+
+  # ---------------- ORGANISERS ----------------
+  /organisers/basic/{id}:
+    get:
+      summary: /organisers/basic/{id}
+      description: Returns basic information on a specific organiser by ID.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The ID of the organiser.
+          schema:
+            type: integer
+            format: int64
+            minimum: 1
+      responses:
+        '200':
+          description: OK (A JSON schema for the student)
+          content:
+            application/json:
+              schema:
+                $ref:  '#/components/schemas/StudentBasic'
+        '400':
+          description: The specified student ID is invalid (not a number)
+        '404':
+          description: A user with the specified ID was not found
+        default:
+          description: Unexpected error
+  /organisers/uni/{id}:
+    get:
+      summary: /organisers/uni/{id}
+      description: Returns university information on a specific user by ID.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The ID of the student.
+          schema:
+            type: integer
+            format: int64
+            minimum: 1
+      responses:
+        '200':
+          description: OK (A JSON schema for the student)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StudentUni'
+        '400':
+          description: The specified student ID is invalid (not a number)
+        '404':
+          description: A user with the specified ID was not found
+        default:
+          description: Unexpected error
+  /organisers/detailed/{id}:
+    get:
+      summary: /organisers/detailed/{id}
+      description: Returns detailed information on a specific user by ID.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The ID of the student.
+          schema:
+            type: integer
+            format: int64
+            minimum: 1
+      responses:
+        '200':
+          description: OK (A JSON schema for the student)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StudentDetailed'
+        '400':
+          description: The specified student ID is invalid (not a number)
+        '404':
+          description: A user with the specified ID was not found
+        default:
+          description: Unexpected error
+  /organisers/create:
+    post:
+      summary: /organisers/create
+      description: Creates a new student
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateStudent'
+      responses:
+        '201':
+          description: Student created
+  /organisers/update/{id}:
+    post:
+      summary: /organisers/update/{id}
+      description: Updates a student
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The ID of the student.
+          schema:
+            type: integer
+            format: int64
+            minimum: 1
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StudentDetailed'
+      responses:
+        '200':
+          description: Student updated
+  /organisers/delete/{id}:
+    delete:
+      summary: /organisers/delete/{id}
+      description: Deletes a student
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The ID of the student.
+          schema:
+            type: integer
+            format: int64
+            minimum: 1
+      responses:
+        '200':
+          description: Student updated
+
+# ================================ SCHEMAS ================================
+components:
+  schemas:
+    CreateStudent:
+      properties:
+        username:
+          type: string
+          example: "johnbernadis93"
+        realname:
+          type: string
+          example: "John Bernadis"
+        age:
+          type: integer
+          format: int64
+          example: 27
+        email:
+          type: string
+          example: "johnbernadis93@gmail.com"
+        university:
+          type: string
+          example: "University of Bath"
+        year:
+          type: integer
+          format: int64
+          example: 2
+        course:
+          type: string
+          example: "Computer Science (BSc) Hons"
+      required:
+        - username
+        - realname
+        - age
+        - email
+        - university
+        - year
+        - course
+    StudentDetailed:
+      properties:
+        username:
+          type: string
+          example: "johnbernadis93"
+        realname:
+          type: string
+          example: "John Bernadis"
+        age:
+          type: integer
+          format: int64
+          example: 27
+        email:
+          type: string
+          example: "johnbernadis93@gmail.com"
+        university:
+          type: string
+          example: "University of Bath"
+        year:
+          type: integer
+          format: int64
+          example: 2
+        course:
+          type: string
+          example: "Computer Science (BSc) Hons"
+    StudentBasic:
+      properties:
+        username:
+          type: string
+          example: "johnbernadis93"
+        realname:
+          type: string
+          example: "John Bernadis"
+        age:
+          type: integer
+          format: int64
+          example: 27
+    StudentUni:
+      properties:
+        email:
+          type: string
+          example: "johnbernadis93@gmail.com"
+        university:
+          type: string
+          example: "University of Bath"
+        year:
+          type: integer
+          format: int64
+          example: 2
+        course:
+          type: string
+          example: "Computer Science (BSc) Hons"
