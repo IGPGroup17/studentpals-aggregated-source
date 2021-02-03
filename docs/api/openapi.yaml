@@ -277,27 +277,6 @@ paths:
 components:
   schemas:
       # ---------------- STUDENTS ----------------
-    CreateStudent:
-      type: object
-      allOf:
-        - $ref: '#/components/schemas/StudentDetailed'
-      required:
-        - username
-        - realname
-        - age
-        - email
-        - university
-        - year
-        - course
-
-    StudentDetailed:
-      type: object
-      properties:
-        basic:
-          $ref: '#/components/schemas/StudentBasic'
-        uni:
-          $ref: '#/components/schemas/StudentUni'
-
     StudentBasic:
       properties:
         username:
@@ -328,6 +307,27 @@ components:
         course:
           type: string
           example: "Computer Science (BSc) Hons"
+
+      StudentDetailed:
+        type: object
+        properties:
+          basic:
+            $ref: '#/components/schemas/StudentBasic'
+          uni:
+            $ref: '#/components/schemas/StudentUni'
+
+      CreateStudent:
+        type: object
+        allOf:
+          - $ref: '#/components/schemas/StudentDetailed'
+        required:
+          - username
+          - realname
+          - age
+          - email
+          - university
+          - year
+          - course
       # ---------------- ORGANISERS ----------------
     CreateOrganiser:
       type: object
