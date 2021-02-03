@@ -5,7 +5,7 @@ info:
   version: 0.0.1
 
 servers:
-  - url: https://xjsdyxh2gd.execute-api.eu-west-1.amazonaws.com/Prod
+  - url: https://xjsdyxh2gd.execute-api.eu-west-1.amazonaws.com/Prod/v1
     description: Students Service
 
 paths:
@@ -160,7 +160,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref:  '#/components/schemas/StudentBasic'
+                $ref:  '#/components/schemas/OrganiserBasic'
         '400':
           description: The specified student ID is invalid (not a number)
         '404':
@@ -169,13 +169,13 @@ paths:
           description: Unexpected error
   /organisers/uni/{id}:
     get:
-      summary: /organisers/uni/{id}
-      description: Returns university information on a specific user by ID.
+      summary: /organisers/events/{id}
+      description: Returns events on a specific organiser by ID.
       parameters:
         - name: id
           in: path
           required: true
-          description: The ID of the student.
+          description: The ID of the organiser.
           schema:
             type: integer
             format: int64
@@ -186,7 +186,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/StudentUni'
+                $ref: '#/components/schemas/OrganiserEvents'
         '400':
           description: The specified student ID is invalid (not a number)
         '404':
@@ -196,7 +196,7 @@ paths:
   /organisers/detailed/{id}:
     get:
       summary: /organisers/detailed/{id}
-      description: Returns detailed information on a specific user by ID.
+      description: Returns detailed information on a specific organiser by ID.
       parameters:
         - name: id
           in: path
@@ -212,9 +212,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/StudentDetailed'
+                $ref: '#/components/schemas/OrganiserDetailed'
         '400':
-          description: The specified student ID is invalid (not a number)
+          description: The specified organiser ID is invalid (not a number)
         '404':
           description: A user with the specified ID was not found
         default:
@@ -222,13 +222,13 @@ paths:
   /organisers/create:
     post:
       summary: /organisers/create
-      description: Creates a new student
+      description: Creates a new organiser.
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CreateStudent'
+              $ref: '#/components/schemas/CreateOrganiser'
       responses:
         '201':
           description: Student created
@@ -240,7 +240,7 @@ paths:
         - name: id
           in: path
           required: true
-          description: The ID of the student.
+          description: The ID of the organiser.
           schema:
             type: integer
             format: int64
@@ -250,7 +250,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/StudentDetailed'
+              $ref: '#/components/schemas/OrganiserDetailed'
       responses:
         '200':
           description: Student updated
@@ -269,11 +269,12 @@ paths:
             minimum: 1
       responses:
         '200':
-          description: Student updated
+          description: Organiser updated
 
 # ================================ SCHEMAS ================================
 components:
   schemas:
+      # ---------------- STUDENTS ----------------
     CreateStudent:
       properties:
         username:
@@ -345,6 +346,92 @@ components:
           format: int64
           example: 27
     StudentUni:
+      properties:
+        email:
+          type: string
+          example: "johnbernadis93@gmail.com"
+        university:
+          type: string
+          example: "University of Bath"
+        year:
+          type: integer
+          format: int64
+          example: 2
+        course:
+          type: string
+          example: "Computer Science (BSc) Hons"
+      # ---------------- ORGANISERS ----------------
+    CreateOrganiser:
+      properties:
+        username:
+          type: string
+          example: "johnbernadis93"
+        realname:
+          type: string
+          example: "John Bernadis"
+        age:
+          type: integer
+          format: int64
+          example: 27
+        email:
+          type: string
+          example: "johnbernadis93@gmail.com"
+        university:
+          type: string
+          example: "University of Bath"
+        year:
+          type: integer
+          format: int64
+          example: 2
+        course:
+          type: string
+          example: "Computer Science (BSc) Hons"
+      required:
+        - username
+        - realname
+        - age
+        - email
+        - university
+        - year
+        - course
+    OrganiserDetailed:
+      properties:
+        username:
+          type: string
+          example: "johnbernadis93"
+        realname:
+          type: string
+          example: "John Bernadis"
+        age:
+          type: integer
+          format: int64
+          example: 27
+        email:
+          type: string
+          example: "johnbernadis93@gmail.com"
+        university:
+          type: string
+          example: "University of Bath"
+        year:
+          type: integer
+          format: int64
+          example: 2
+        course:
+          type: string
+          example: "Computer Science (BSc) Hons"
+    OrganiserBasic:
+      properties:
+        username:
+          type: string
+          example: "johnbernadis93"
+        realname:
+          type: string
+          example: "John Bernadis"
+        age:
+          type: integer
+          format: int64
+          example: 27
+    OrganiserEvents:
       properties:
         email:
           type: string
