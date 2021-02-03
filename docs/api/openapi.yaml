@@ -278,6 +278,7 @@ components:
   schemas:
       # ---------------- STUDENTS ----------------
     CreateStudent:
+      type: object
       allOf:
         - $ref: '#/components/schemas/StudentDetailed'
       required:
@@ -288,10 +289,15 @@ components:
         - university
         - year
         - course
+
     StudentDetailed:
-      allOf:
-        - $ref: '#/components/schemas/StudentBasic'
-        - $ref: '#/components/schemas/StudentUni'
+      type: object
+      properties:
+        basic:
+          $ref: '#/components/schemas/StudentBasic'
+        uni:
+          $ref: '#/components/schemas/StudentUni'
+
     StudentBasic:
       properties:
         username:
@@ -324,8 +330,9 @@ components:
           example: "Computer Science (BSc) Hons"
       # ---------------- ORGANISERS ----------------
     CreateOrganiser:
+      type: object
       allOf:
-        - $ref: '#/components/schemas/'
+        - $ref: '#/components/schemas/OrganiserDetailed'
       required:
         - username
         - realname
@@ -335,30 +342,10 @@ components:
         - year
         - course
     OrganiserDetailed:
-      properties:
-        username:
-          type: string
-          example: "johnbernadis93"
-        realname:
-          type: string
-          example: "John Bernadis"
-        age:
-          type: integer
-          format: int64
-          example: 27
-        email:
-          type: string
-          example: "johnbernadis93@gmail.com"
-        university:
-          type: string
-          example: "University of Bath"
-        year:
-          type: integer
-          format: int64
-          example: 2
-        course:
-          type: string
-          example: "Computer Science (BSc) Hons"
+      type: object
+      allOf:
+        - $ref: '#/components/schemas/OrganiserBasic'
+        - $ref: '/components/schemas/OrganiserEvents'
     OrganiserBasic:
       properties:
         username:
