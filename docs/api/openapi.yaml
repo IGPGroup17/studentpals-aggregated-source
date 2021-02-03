@@ -7,6 +7,8 @@ info:
 servers:
   - url: https://xjsdyxh2gd.execute-api.eu-west-1.amazonaws.com/Prod/v1
     description: Students Service
+  - url: https://www.google.co.uk
+    description: Organisers Service
 
 paths:
   # ---------------- STUDENTS ----------------
@@ -287,33 +289,10 @@ components:
         - year
         - course
     StudentDetailed:
-      properties:
-        username:
-          type: string
-          example: "johnbernadis93"
-        realname:
-          type: string
-          example: "John Bernadis"
-        gender:
-          type: string
-          example: "Male"
-        age:
-          type: integer
-          format: int64
-          example: 27
-        email:
-          type: string
-          example: "johnbernadis93@gmail.com"
-        university:
-          type: string
-          example: "University of Bath"
-        year:
-          type: integer
-          format: int64
-          example: 2
-        course:
-          type: string
-          example: "Computer Science (BSc) Hons"
+      allOf:
+        - $ref: '#/components/schemas/StudentBasic'
+      allOf:
+        - $ref: '#/components/schemas/StudentUni'
     StudentBasic:
       properties:
         username:
