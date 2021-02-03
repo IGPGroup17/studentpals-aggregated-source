@@ -2,24 +2,24 @@ package com.igp.studentservice.service;
 
 import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.events.APIGatewayProxyRequestEvent;
-import com.igp.studentservice.model.Student;
+import com.igp.studentservice.model.*;
 import com.igp.studentservice.util.ResponseEntity;
 
 public class StudentServiceImpl implements StudentService {
 
     @Override
-    public ResponseEntity<Student> getBasicStudent(APIGatewayProxyRequestEvent event, Context context) {
-        return ResponseEntity.ok(new Student("Basic Student"));
+    public ResponseEntity<StudentBasic> getBasicStudent(APIGatewayProxyRequestEvent event, Context context) {
+        return ResponseEntity.ok(Examples.EXAMPLE_BASIC);
     }
 
     @Override
-    public ResponseEntity<Student> getDetailedStudent(APIGatewayProxyRequestEvent event, Context context) {
-        return ResponseEntity.ok(new Student("Detailed Student"));
+    public ResponseEntity<StudentDetailed> getDetailedStudent(APIGatewayProxyRequestEvent event, Context context) {
+        return ResponseEntity.ok(Examples.EXAMPLE_DETAILED);
     }
 
     @Override
-    public ResponseEntity<Student> getUniStudent(APIGatewayProxyRequestEvent event, Context context) {
-        return ResponseEntity.ok(new Student("Uni Student"));
+    public ResponseEntity<StudentUni> getUniStudent(APIGatewayProxyRequestEvent event, Context context) {
+        return ResponseEntity.ok(Examples.EXAMPLE_UNI);
     }
 
     @Override

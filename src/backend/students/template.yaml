@@ -28,7 +28,7 @@ Resources:
         CreateStudent:
           Type: Api
           Properties:
-            Path: /v1/students
+            Path: /v1/students/create/{id}
             Method: post
         DeleteStudent:
           Type: Api
