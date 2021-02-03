@@ -167,7 +167,7 @@ paths:
           description: A user with the specified ID was not found
         default:
           description: Unexpected error
-  /organisers/uni/{id}:
+  /organisers/events/{id}:
     get:
       summary: /organisers/events/{id}
       description: Returns events on a specific organiser by ID.
@@ -287,6 +287,9 @@ components:
           type: integer
           format: int64
           example: 27
+        gender:
+          type: string
+          example: "Male"
         email:
           type: string
           example: "johnbernadis93@gmail.com"
@@ -316,6 +319,9 @@ components:
         realname:
           type: string
           example: "John Bernadis"
+        gender:
+          type: string
+          example: "Male"
         age:
           type: integer
           format: int64
@@ -345,6 +351,9 @@ components:
           type: integer
           format: int64
           example: 27
+        gender:
+          type: string
+          example: "Male"
     StudentUni:
       properties:
         email:
