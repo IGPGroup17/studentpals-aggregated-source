@@ -276,33 +276,8 @@ components:
   schemas:
       # ---------------- STUDENTS ----------------
     CreateStudent:
-      properties:
-        username:
-          type: string
-          example: "johnbernadis93"
-        realname:
-          type: string
-          example: "John Bernadis"
-        age:
-          type: integer
-          format: int64
-          example: 27
-        gender:
-          type: string
-          example: "Male"
-        email:
-          type: string
-          example: "johnbernadis93@gmail.com"
-        university:
-          type: string
-          example: "University of Bath"
-        year:
-          type: integer
-          format: int64
-          example: 2
-        course:
-          type: string
-          example: "Computer Science (BSc) Hons"
+      allOf:
+        - $ref: '#/components/schemas/StudentDetailed'
       required:
         - username
         - realname
@@ -371,30 +346,8 @@ components:
           example: "Computer Science (BSc) Hons"
       # ---------------- ORGANISERS ----------------
     CreateOrganiser:
-      properties:
-        username:
-          type: string
-          example: "johnbernadis93"
-        realname:
-          type: string
-          example: "John Bernadis"
-        age:
-          type: integer
-          format: int64
-          example: 27
-        email:
-          type: string
-          example: "johnbernadis93@gmail.com"
-        university:
-          type: string
-          example: "University of Bath"
-        year:
-          type: integer
-          format: int64
-          example: 2
-        course:
-          type: string
-          example: "Computer Science (BSc) Hons"
+      allOf:
+        - $ref: '#/components/schemas/'
       required:
         - username
         - realname
