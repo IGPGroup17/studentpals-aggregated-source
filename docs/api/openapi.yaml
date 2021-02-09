@@ -10,7 +10,7 @@ servers:
   - url: https://www.google.co.uk
     description: Organisers Service
   - url: https://www.youtube.com
-    description: Review Service
+    description: Review Service part 2
 
 paths:
   # ---------------- STUDENTS ----------------
