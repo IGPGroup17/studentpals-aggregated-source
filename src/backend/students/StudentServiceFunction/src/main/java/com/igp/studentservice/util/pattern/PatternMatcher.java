@@ -8,37 +8,39 @@ import java.util.function.Predicate;
 /**
  * An extremely btec version of scala's pattern matching. I wanted to use scala itself but AWS wouldn't let me :(
  */
-@SuppressWarnings("unchecked") // warning - this isn't safe! honestly i cba to fix it bc type erasures a bitch - please dont fuck it up kthanks
-public class PatternMatcher<I, O> {
+@SuppressWarnings("unchecked") // this is safe bc the only input allowed into Case is enforced to be the correct type in the methods.
+public class PatternMatcher<T, R> {
 
-    private final Set<Case<I, O>> cases;
+    private final Set<Case<T, R>> cases;
 
-    private Case<I, O> defaultCase;
+    private Case<T, R> defaultCase;
 
     public PatternMatcher() {
         this.cases = new HashSet<>();
     }
 
-    public PatternMatcher<I, O> defineCase(I input, O output, Guard... guards) {
-        return defineCase((Case<I, O>) Case.constant(input).then(output).withGuards(guards));
+    public PatternMatcher<T, R> defineCase(T input, R output, Guard... guards) {
+        return defineCase((Case<T, R>) Case.constant(input).then(output).withGuards(guards));
     }
 
-    public PatternMatcher<I, O> defineCase(Predicate<I> matcher, O output, Guard... guards) {
-        return defineCase((Case<I, O>) Case.of(matcher).then(output).withGuards(guards));
+    public PatternMatcher<T, R> defineCase(Predicate<T> matcher, R output, Guard... guards) {
+        return defineCase((Case<T, R>) Case.of(matcher).then(output).withGuards(guards));
     }
 
-    public PatternMatcher<I, O> defineCase(Case<I, O> caze) {
-        cases.add(caze);
+    public PatternMatcher<T, R> defineCase(Case<T, R> _case) {
+        cases.add(_case);
         return this;
     }
 
-    public PatternMatcher<I, O> defaultCase(O output) {
+    public PatternMatcher<T, R> defaultCase(R output) {
         this.defaultCase = Case.defaultCase(output);
         return this;
     }
 
-    public O match(I input) {
+    public R match(T input) {
         Objects.requireNonNull(defaultCase, "Default case can't be null");
+
+
         return cases.stream()
                 .filter(c -> c.test(input))
                 .findFirst()
