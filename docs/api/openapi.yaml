@@ -328,6 +328,7 @@ components:
           - university
           - year
           - course
+
       # ---------------- ORGANISERS ----------------
     CreateOrganiser:
       type: object
@@ -341,11 +342,13 @@ components:
         - university
         - year
         - course
+        
     OrganiserDetailed:
       type: object
       allOf:
         - $ref: '#/components/schemas/OrganiserBasic'
         - $ref: '/components/schemas/OrganiserEvents'
+
     OrganiserBasic:
       properties:
         username:
@@ -358,6 +361,7 @@ components:
           type: integer
           format: int64
           example: 27
+
     OrganiserEvents:
       properties:
         email:
