@@ -275,135 +275,58 @@ paths:
         '200':
           description: Organiser updated
 
-/reviews/organiser/{id}:
-  get:
-    summary: /reviews/organiser/{id}
-    description: Returns a list of review information for an organiser.
-    parameters:
-      - name: id
-        in: path
-        required: true
-        description: The ID of the organiser.
-        schema:
-          type: integer
-          format: int64
-          minimum: 1
-    responses:
-      '200':
-        description: OK
-        content:
-          application/json:
-            schema:
-              $ref:  '#/components/schemas/ReviewsByOrganiser'
-      '400':
-        description: The specified Organiser ID is invalid (not a number)
-      '404':
-        description: A user with the specified Organiser ID was not found
-      default:
-        description: Unexpected error
-/reviews/creator/{id}:
-  get:
-    summary: /reviews/creator/{id}
-    description: Returns a list of review information created by a user.
-    parameters:
-      - name: id
-        in: path
-        required: true
-        description: The ID of the user.
-        schema:
-          type: integer
-          format: int64
-          minimum: 1
-    responses:
-      '200':
-        description: OK
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ReviewsByCreator'
-      '400':
-        description: The specified Creator ID is invalid (not a number)
-      '404':
-        description: A user with the specified ID was not found
-      default:
-        description: Unexpected error
-/students/detailed/{id}:
-  get:
-    summary: /students/detailed/{id}
-    description: Returns detailed information on a specific user by ID.
-    parameters:
-      - name: id
-        in: path
-        required: true
-        description: The ID of the student.
-        schema:
-          type: integer
-          format: int64
-          minimum: 1
-    responses:
-      '200':
-        description: OK (A JSON schema for the student)
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/StudentDetailed'
-      '400':
-        description: The specified student ID is invalid (not a number)
-      '404':
-        description: A user with the specified ID was not found
-      default:
-        description: Unexpected error
-/students/create:
-  post:
-    summary: /students/create
-    description: Creates a new student
-    requestBody:
-      required: true
-      content:
-        application/json:
+  /reviews/organiser/{id}:
+    get:
+      summary: /reviews/organiser/{id}
+      description: Returns a list of review information for an organiser.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The ID of the organiser.
           schema:
-            $ref: '#/components/schemas/CreateStudent'
-    responses:
-      '201':
-        description: Student created
-/students/update/{id}:
-  post:
-    summary: /students/update/{id}
-    description: Updates a student
-    parameters:
-      - name: id
-        in: path
-        required: true
-        description: The ID of the student.
-        schema:
-          type: integer
-          format: int64
-          minimum: 1
-    requestBody:
-      required: true
-      content:
-        application/json:
+            type: integer
+            format: int64
+            minimum: 1
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref:  '#/components/schemas/ReviewsByOrganiser'
+        '400':
+          description: The specified Organiser ID is invalid (not a number)
+        '404':
+          description: A user with the specified Organiser ID was not found
+        default:
+          description: Unexpected error
+  /reviews/creator/{id}:
+    get:
+      summary: /reviews/creator/{id}
+      description: Returns a list of review information created by a user.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The ID of the user.
           schema:
-            $ref: '#/components/schemas/StudentDetailed'
-    responses:
-      '200':
-        description: Student updated
-/students/delete/{id}:
-  delete:
-    summary: /students/delete/{id}
-    description: Deletes a student
-    parameters:
-      - name: id
-        in: path
-        required: true
-        description: The ID of the student.
-        schema:
-          type: integer
-          format: int64
-          minimum: 1
-    responses:
-      '200':
-        description: Student updated
+            type: integer
+            format: int64
+            minimum: 1
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReviewsByCreator'
+        '400':
+          description: The specified Creator ID is invalid (not a number)
+        '404':
+          description: A user with the specified ID was not found
+        default:
+          description: Unexpected error
 
 # ================================ SCHEMAS ================================
 components:
