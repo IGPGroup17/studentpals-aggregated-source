@@ -4,6 +4,7 @@ import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
 import com.amazonaws.services.lambda.runtime.events.APIGatewayProxyRequestEvent;
 import com.amazonaws.services.lambda.runtime.events.APIGatewayProxyResponseEvent;
+import com.igp.studentservice.model.Student;
 import com.igp.studentservice.util.pattern.PatternMatcher;
 import com.igp.studentservice.service.StudentService;
 import com.igp.studentservice.service.StudentServiceImpl;

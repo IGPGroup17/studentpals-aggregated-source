@@ -5,6 +5,7 @@ import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBSaveExpression;
 import com.amazonaws.services.dynamodbv2.model.AttributeValue;
 import com.amazonaws.services.dynamodbv2.model.ExpectedAttributeValue;
+import com.igp.studentservice.config.DynamoDBConfig;
 import com.igp.studentservice.dao.StudentCrudDao;
 import com.igp.studentservice.model.Student;
 
@@ -14,8 +15,8 @@ import java.util.Map;
 public class StudentServiceDaoImpl implements StudentCrudDao {
     private DynamoDBMapper dynamoDBMapper;
 
-    public StudentServiceDaoImpl(DynamoDBMapper dynamoDBMapper) {
-        this.dynamoDBMapper = dynamoDBMapper;
+    public StudentServiceDaoImpl() {
+        this.dynamoDBMapper = DynamoDBConfig.dynamoDBMapper();
     }
 
     @Override
