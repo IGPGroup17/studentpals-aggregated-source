@@ -6,7 +6,6 @@ import com.igp.studentservice.model.*;
 import com.igp.studentservice.util.ResponseEntity;
 
 public class StudentServiceImpl implements StudentService {
-
     @Override
     public ResponseEntity<Student> createStudent(APIGatewayProxyRequestEvent event, Context context) {
         return ResponseEntity.ok(Examples.EXAMPLE);

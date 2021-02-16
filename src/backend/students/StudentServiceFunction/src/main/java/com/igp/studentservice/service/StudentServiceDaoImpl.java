@@ -10,45 +10,42 @@ import com.igp.studentservice.model.Student;
 import java.util.HashMap;
 import java.util.Map;
 
-@Component
-public class UserCrudDaoImpl {
-        //implements UserCrudDao {
+public class StudentServiceDaoImpl implements StudentCrudDao {
 
     private DynamoDBMapper dynamoDBMapper;
 
-    @Autowired
-    public UserCrudDaoImpl(DynamoDBMapper dynamoDBMapper) {
+    public StudentServiceDaoImpl(DynamoDBMapper dynamoDBMapper) {
         this.dynamoDBMapper = dynamoDBMapper;
     }
 
     @Override
-    public Student createUser(Student user) {
+    public Student createStudent(Student user) {
         dynamoDBMapper.save(user);
         return user;
     }
 
     @Override
-    public Student readUser(String studentId) {
+    public Student readStudent(String studentId) {
         return dynamoDBMapper.load(Student.class, studentId);
     }
 
     @Override
-    public Student updateUser(Student user) {
+    public Student updateStudent(Student student) {
         Map<String, ExpectedAttributeValue> expectedAttributeValueMap = new HashMap<>();
-        expectedAttributeValueMap.put("userId", new ExpectedAttributeValue(new AttributeValue().withS(user.getStudentId())));
+        expectedAttributeValueMap.put("studentId", new ExpectedAttributeValue(new AttributeValue().withS(student.getStudentId())));
         DynamoDBSaveExpression saveExpression = new DynamoDBSaveExpression().withExpected(expectedAttributeValueMap);
-        dynamoDBMapper.save(user, saveExpression);
-        return user;
+        dynamoDBMapper.save(student, saveExpression);
+        return student;
     }
 
     @Override
-    public void deleteUser(String userId) {
+    public void deleteStudent(String studentId) {
         Map<String, ExpectedAttributeValue> expectedAttributeValueMap = new HashMap<>();
-        expectedAttributeValueMap.put("userId", new ExpectedAttributeValue(new AttributeValue().withS(userId)));
+        expectedAttributeValueMap.put("studentId", new ExpectedAttributeValue(new AttributeValue().withS(studentId)));
         DynamoDBDeleteExpression deleteExpression = new DynamoDBDeleteExpression().withExpected(expectedAttributeValueMap);
-        User user = User.builder()
-                .userId(userId)
+        Student student = Student.builder()
+                .studentId(studentId)
                 .build();
-        dynamoDBMapper.delete(user, deleteExpression);
+        dynamoDBMapper.delete(student, deleteExpression);
     }
 }
