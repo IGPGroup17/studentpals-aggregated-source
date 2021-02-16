@@ -37,7 +37,7 @@ public class Handler implements RequestHandler<APIGatewayProxyRequestEvent, APIG
                         () -> event.getHttpMethod().equals("GET"))
 
                 .defineCase(
-                        "/v1/students/uni/{id}", service.getUniStudent(event, context),
+                        "/v1/students/uni/{id}", service.readStudent(event, context),
                         () -> event.getHttpMethod().equals("GET"))
 
                 .defineCase(

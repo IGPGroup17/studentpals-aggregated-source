@@ -22,19 +22,30 @@ public class Student {
     @DynamoDBAttribute(attributeName = "username")
     private String username;
 
+    @DynamoDBAttribute(attributeName = "email")
+    private String email;
+
     @DynamoDBAttribute(attributeName = "realName")
     @SerializedName("realname")
     private String realName;
 
     @DynamoDBAttribute(attributeName = "age")
-    private int age;
+    private Integer age;
 
     @DynamoDBAttribute(attributeName = "gender")
     private String gender;
 
-    @DynamoDBAttribute(attributeName = "name")
-    private String name;
+    @DynamoDBAttribute(attributeName = "universityName")
+    private String universityName;
 
-    @DynamoDBAttribute(attributeName = "uni")
-    private StudentUni uni;
+    @DynamoDBAttribute(attributeName = "universityEmail")
+    private String universityEmail;
+
+    @DynamoDBAttribute(attributeName = "year")
+    private Integer year;
+
+    @DynamoDBAttribute(attributeName = "course")
+    private String course;
+
+
 }

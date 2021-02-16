@@ -8,32 +8,22 @@ import com.igp.studentservice.util.ResponseEntity;
 public class StudentServiceImpl implements StudentService {
 
     @Override
-    public ResponseEntity<StudentBasic> getBasicStudent(APIGatewayProxyRequestEvent event, Context context) {
-        return ResponseEntity.ok(Examples.EXAMPLE_BASIC);
+    public ResponseEntity<Student> createStudent(APIGatewayProxyRequestEvent event, Context context) {
+        return ResponseEntity.ok(Examples.EXAMPLE);
     }
 
     @Override
-    public ResponseEntity<StudentDetailed> getDetailedStudent(APIGatewayProxyRequestEvent event, Context context) {
-        return ResponseEntity.ok(Examples.EXAMPLE_DETAILED);
-    }
-
-    @Override
-    public ResponseEntity<StudentUni> getUniStudent(APIGatewayProxyRequestEvent event, Context context) {
-        return ResponseEntity.ok(Examples.EXAMPLE_UNI);
+    public ResponseEntity<Student> readStudent(APIGatewayProxyRequestEvent event, Context context) {
+        return ResponseEntity.ok(Examples.EXAMPLE);
     }
 
     @Override
     public ResponseEntity<Student> updateStudent(APIGatewayProxyRequestEvent event, Context context) {
-        return ResponseEntity.ok(new Student("Update"));
-    }
-
-    @Override
-    public ResponseEntity<Student> createStudent(APIGatewayProxyRequestEvent event, Context context) {
-        return ResponseEntity.ok(new Student("Create"));
+        return ResponseEntity.ok(Examples.EXAMPLE);
     }
 
     @Override
     public ResponseEntity<Student> deleteStudent(APIGatewayProxyRequestEvent event, Context context) {
-        return ResponseEntity.ok(new Student("Delete"));
+        return ResponseEntity.ok(Examples.EXAMPLE);
     }
 }
