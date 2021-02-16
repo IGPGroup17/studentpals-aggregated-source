@@ -18,7 +18,7 @@ Resources:
         CreateStudent:
           Type: Api
           Properties:
-            Path: /v1/students/{id}
+            Path: /v1/students
             Method: post
         ReadStudent:
           Type: Api
@@ -30,11 +30,10 @@ Resources:
           Properties:
             Path: /v1/students/{id}
             Method: delete
-
         UpdateStudent:
           Type: Api
           Properties:
-            Path: /v1/students/{id}
+            Path: /v1/students
             Method: put
     Metadata:
       DockerTag: java11-maven-v1
