@@ -8,11 +8,11 @@ import com.igp.studentservice.util.ResponseEntity;
 
 public interface StudentService extends IService {
 
-    ResponseEntity<Student> createStudent(APIGatewayProxyRequestEvent event, Context context);
+    ResponseEntity<Student> createStudent(APIGatewayProxyRequestEvent event, Context context, Student student);
 
-    ResponseEntity<Student> readStudent(APIGatewayProxyRequestEvent event, Context context);
+    ResponseEntity<Student> readStudent(APIGatewayProxyRequestEvent event, Context context, String studentId );
 
-    ResponseEntity<Student> updateStudent(APIGatewayProxyRequestEvent event, Context context);
+    ResponseEntity<Student> updateStudent(APIGatewayProxyRequestEvent event, Context context, Student student);
 
-    ResponseEntity<Student> deleteStudent(APIGatewayProxyRequestEvent event, Context context);
+    ResponseEntity<Student> deleteStudent(APIGatewayProxyRequestEvent event, Context context, String studentId);
 }

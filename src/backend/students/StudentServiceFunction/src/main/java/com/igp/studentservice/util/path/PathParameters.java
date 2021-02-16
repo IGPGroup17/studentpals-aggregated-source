@@ -61,9 +61,6 @@ public class PathParameters {
 
         String value = getPathParameter(event, key);
 
-        if (value == null)
-            throw new IllegalArgumentException("The key specified isn't valid!");
-
         return StringToTypeConversionFactory.convert(value, clazz);
     }
 }
