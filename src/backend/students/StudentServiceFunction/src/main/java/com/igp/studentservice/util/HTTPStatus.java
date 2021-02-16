@@ -108,6 +108,10 @@ public enum HTTPStatus {
         return this.code + " " + this.getMessage();
     }
 
+
+    /**
+     * Gets HTTP Status from its appropriate status code. Also checks if its null, so you dont mess things up.
+     */
     public HTTPStatus of(int statusCode) {
         HTTPStatus status = getStatusFrom(statusCode);
 
@@ -117,6 +121,9 @@ public enum HTTPStatus {
         return status;
     }
 
+    /**
+     * Performs logic for getting HTTP Status from its appropriate status code.
+     */
     private HTTPStatus getStatusFrom(int statusCode) {
         for (HTTPStatus s : values()) {
             if (s.getCode() == statusCode)

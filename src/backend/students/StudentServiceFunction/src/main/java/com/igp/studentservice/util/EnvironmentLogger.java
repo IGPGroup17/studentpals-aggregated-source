@@ -6,6 +6,12 @@ import com.amazonaws.services.lambda.runtime.events.APIGatewayProxyRequestEvent;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+/**
+ * Logs everything to do with the request, and puts it on AWS CloudWatch.
+ *
+ * You can access the CloudWatch logs from Lambda directly, if you just look at requests in the past few hours, it should
+ * show all of this stuff.
+ */
 public class EnvironmentLogger {
 
     public static void log(APIGatewayProxyRequestEvent event, Context context) {

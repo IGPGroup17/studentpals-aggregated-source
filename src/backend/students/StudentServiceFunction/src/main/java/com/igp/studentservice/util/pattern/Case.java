@@ -4,6 +4,9 @@ import java.util.Objects;
 import java.util.Set;
 import java.util.function.Predicate;
 
+/**
+ * Defines a case as part of the pattern matching.
+ */
 public class Case<I, O> {
 
     private static final Predicate<Boolean> TRUTH_PREDICATE = t -> t.equals(true);

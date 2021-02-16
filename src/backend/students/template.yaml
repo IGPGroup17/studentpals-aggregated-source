@@ -15,41 +15,27 @@ Resources:
       ImageUri: "studentservicefunction:java11-maven-v1"
       PackageType: "Image"
       Events:
-        BaseStudent:
-          Type: Api
-          Properties:
-            Path: /v1/students
-            Method: any
-        BasicStudent:
-          Type: Api
-          Properties:
-            Path: /v1/students/basic/{id}
-            Method: get
         CreateStudent:
           Type: Api
           Properties:
-            Path: /v1/students/create/{id}
+            Path: /v1/students/{id}
             Method: post
+        ReadStudent:
+          Type: Api
+          Properties:
+            Path: /v1/students/{id}
+            Method: get
         DeleteStudent:
           Type: Api
           Properties:
-            Path: /v1/students/delete/{id}
+            Path: /v1/students/{id}
             Method: delete
-        DetailedStudent:
-          Type: Api
-          Properties:
-            Path: /v1/students/detailed/{id}
-            Method: get
-        UniStudent:
-          Type: Api
-          Properties:
-            Path: /v1/students/uni/{id}
-            Method: get
+
         UpdateStudent:
           Type: Api
           Properties:
-            Path: /v1/students/update/{id}
-            Method: post
+            Path: /v1/students/{id}
+            Method: put
     Metadata:
       DockerTag: java11-maven-v1
       DockerContext: ./StudentServiceFunction

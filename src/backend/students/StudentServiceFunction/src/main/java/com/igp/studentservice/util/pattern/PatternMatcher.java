@@ -6,7 +6,16 @@ import java.util.Set;
 import java.util.function.Predicate;
 
 /**
+ * PROBLEM: We wanna be more specific about the HTTP Request (ie. We want to check that the request is 1) going to the
+ * correct path and 2, that its of a certain type of HTTP request. For example, /students/1. We need to check that it
+ * follows the structure /students/{id} AND that it's a GET Request.
+ *
+ * SOLUTION:
  * An extremely btec version of scala's pattern matching. I wanted to use scala itself but AWS wouldn't let me :(
+ *
+ * This allows you to define a switch statement in one line, with additional conditionals (in the form of Guards
+ * {@link Guard}. It can then match a string at the end.
+ *
  */
 @SuppressWarnings("unchecked") // this is safe bc the only input allowed into Case is enforced to be the correct type in the methods.
 public class PatternMatcher<T, R> {
