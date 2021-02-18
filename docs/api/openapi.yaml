@@ -10,7 +10,7 @@ servers:
 
 paths:
   # ---------------- STUDENTS ----------------
-  /students/{id}:
+  Get Student:
     get:
       summary: /students/{id}
       description: Returns basic information on a specific student by Profile ID.
@@ -35,7 +35,7 @@ paths:
           description: A user with the specified Profile ID was not found
         default:
           description: Unexpected error
-  /students:
+  Create Student:
     post:
       summary: /students/
       description: Creates a new student
@@ -48,7 +48,7 @@ paths:
       responses:
         '201':
           description: Student created
-  /students/{id}:
+  Update Student:
     put:
       summary: /students/{id}
       description: Updates a student
@@ -70,7 +70,7 @@ paths:
       responses:
         '200':
           description: Student updated
-  /students/delete/{id}:
+  Delete Student:
     delete:
       summary: /students/{id}
       description: Deletes a student
