@@ -7,14 +7,10 @@ info:
 servers:
   - url: https://xjsdyxh2gd.execute-api.eu-west-1.amazonaws.com/Prod/v1
     description: Students Service
-  - url: https://www.google.co.uk
-    description: Organisers Service
-  - url: https://www.youtube.com
-    description: Review Service part 2
 
 paths:
   # ---------------- STUDENTS ----------------
-  /students/basic/{id}:
+  /students/{id}:
     get:
       summary: /students/basic/{id}
       description: Returns basic information on a specific student by Profile ID.
@@ -22,10 +18,9 @@ paths:
         - name: id
           in: path
           required: true
-          description: The ID of the student.
+          description: The UUID of the student.
           schema:
-            type: integer
-            format: int64
+            type: string
             minimum: 1
       responses:
         '200':
@@ -40,33 +35,7 @@ paths:
           description: A user with the specified Profile ID was not found
         default:
           description: Unexpected error
-  /students/uni/{id}:
-    get:
-      summary: /students/uni/{id}
-      description: Returns university information on a specific user by Profile ID.
-      parameters:
-        - name: id
-          in: path
-          required: true
-          description: The ID of the student.
-          schema:
-            type: integer
-            format: int64
-            minimum: 1
-      responses:
-        '200':
-          description: OK (A JSON schema for the student)
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/StudentUni'
-        '400':
-          description: The specified student ID is invalid (not a number)
-        '404':
-          description: A user with the specified ID was not found
-        default:
-          description: Unexpected error
-  /students/detailed/{id}:
+  /students/{id}:
     get:
       summary: /students/detailed/{id}
       description: Returns detailed information on a specific user by ID.
@@ -92,9 +61,9 @@ paths:
           description: A user with the specified ID was not found
         default:
           description: Unexpected error
-  /students/create:
+  /students:
     post:
-      summary: /students/create
+      summary: /students/
       description: Creates a new student
       requestBody:
         required: true
@@ -105,8 +74,8 @@ paths:
       responses:
         '201':
           description: Student created
-  /students/update/{id}:
-    post:
+  /students/{id}:
+    put:
       summary: /students/update/{id}
       description: Updates a student
       parameters:
@@ -144,199 +113,21 @@ paths:
         '200':
           description: Student updated
 
-  # ---------------- ORGANISERS ----------------
-  /organisers/basic/{id}:
-    get:
-      summary: /organisers/basic/{id}
-      description: Returns basic information on a specific organiser by ID.
-      parameters:
-        - name: id
-          in: path
-          required: true
-          description: The ID of the organiser.
-          schema:
-            type: integer
-            format: int64
-            minimum: 1
-      responses:
-        '200':
-          description: OK (A JSON schema for the student)
-          content:
-            application/json:
-              schema:
-                $ref:  '#/components/schemas/OrganiserBasic'
-        '400':
-          description: The specified student ID is invalid (not a number)
-        '404':
-          description: A user with the specified ID was not found
-        default:
-          description: Unexpected error
-  /organisers/events/{id}:
-    get:
-      summary: /organisers/events/{id}
-      description: Returns events on a specific organiser by ID.
-      parameters:
-        - name: id
-          in: path
-          required: true
-          description: The ID of the organiser.
-          schema:
-            type: integer
-            format: int64
-            minimum: 1
-      responses:
-        '200':
-          description: OK (A JSON schema for the student)
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/OrganiserEvents'
-        '400':
-          description: The specified student ID is invalid (not a number)
-        '404':
-          description: A user with the specified ID was not found
-        default:
-          description: Unexpected error
-  /organisers/detailed/{id}:
-    get:
-      summary: /organisers/detailed/{id}
-      description: Returns detailed information on a specific organiser by ID.
-      parameters:
-        - name: id
-          in: path
-          required: true
-          description: The ID of the student.
-          schema:
-            type: integer
-            format: int64
-            minimum: 1
-      responses:
-        '200':
-          description: OK (A JSON schema for the student)
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/OrganiserDetailed'
-        '400':
-          description: The specified organiser ID is invalid (not a number)
-        '404':
-          description: A user with the specified ID was not found
-        default:
-          description: Unexpected error
-  /organisers/create:
-    post:
-      summary: /organisers/create
-      description: Creates a new organiser.
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/CreateOrganiser'
-      responses:
-        '201':
-          description: Student created
-  /organisers/update/{id}:
-    post:
-      summary: /organisers/update/{id}
-      description: Updates a student
-      parameters:
-        - name: id
-          in: path
-          required: true
-          description: The ID of the organiser.
-          schema:
-            type: integer
-            format: int64
-            minimum: 1
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/OrganiserDetailed'
-      responses:
-        '200':
-          description: Student updated
-  /organisers/delete/{id}:
-    delete:
-      summary: /organisers/delete/{id}
-      description: Deletes a student
-      parameters:
-        - name: id
-          in: path
-          required: true
-          description: The ID of the student.
-          schema:
-            type: integer
-            format: int64
-            minimum: 1
-      responses:
-        '200':
-          description: Organiser updated
-
-  /reviews/organiser/{id}:
-    get:
-      summary: /reviews/organiser/{id}
-      description: Returns a list of review information for an organiser.
-      parameters:
-        - name: id
-          in: path
-          required: true
-          description: The ID of the organiser.
-          schema:
-            type: integer
-            format: int64
-            minimum: 1
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref:  '#/components/schemas/ReviewsByOrganiser'
-        '400':
-          description: The specified Organiser ID is invalid (not a number)
-        '404':
-          description: A user with the specified Organiser ID was not found
-        default:
-          description: Unexpected error
-  /reviews/creator/{id}:
-    get:
-      summary: /reviews/creator/{id}
-      description: Returns a list of review information created by a user.
-      parameters:
-        - name: id
-          in: path
-          required: true
-          description: The ID of the user.
-          schema:
-            type: integer
-            format: int64
-            minimum: 1
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ReviewsByCreator'
-        '400':
-          description: The specified Creator ID is invalid (not a number)
-        '404':
-          description: A user with the specified ID was not found
-        default:
-          description: Unexpected error
-
 # ================================ SCHEMAS ================================
 components:
   schemas:
       # ---------------- STUDENTS ----------------
-    StudentBasic:
+    Student:
       properties:
+        studentId:
+          type: string
+          example: "157cf319-f74d-4de4-8f80-09196ec06e7e"
         username:
           type: string
           example: "johnbernadis93"
+        email:
+          type: string
+          example: "johnbernadis93@gmail.com"
         realname:
           type: string
           example: "John Bernadis"
@@ -347,84 +138,12 @@ components:
         gender:
           type: string
           example: "Male"
-    StudentUni:
-      properties:
-        email:
-          type: string
-          example: "johnbernadis93@gmail.com"
-        university:
+        universityName:
           type: string
           example: "University of Bath"
-        year:
-          type: integer
-          format: int64
-          example: 2
-        course:
+        universityEmail:
           type: string
-          example: "Computer Science (BSc) Hons"
-
-      StudentDetailed:
-        type: object
-        properties:
-          basic:
-            $ref: '#/components/schemas/StudentBasic'
-          uni:
-            $ref: '#/components/schemas/StudentUni'
-
-      CreateStudent:
-        type: object
-        allOf:
-          - $ref: '#/components/schemas/StudentDetailed'
-        required:
-          - username
-          - realname
-          - age
-          - email
-          - university
-          - year
-          - course
-
-      # ---------------- ORGANISERS ----------------
-    CreateOrganiser:
-      type: object
-      allOf:
-        - $ref: '#/components/schemas/OrganiserDetailed'
-      required:
-        - username
-        - realname
-        - age
-        - email
-        - university
-        - year
-        - course
-
-    OrganiserDetailed:
-      type: object
-      allOf:
-        - $ref: '#/components/schemas/OrganiserBasic'
-        - $ref: '/components/schemas/OrganiserEvents'
-
-    OrganiserBasic:
-      properties:
-        username:
-          type: string
-          example: "johnbernadis93"
-        realname:
-          type: string
-          example: "John Bernadis"
-        age:
-          type: integer
-          format: int64
-          example: 27
-
-    OrganiserEvents:
-      properties:
-        email:
-          type: string
-          example: "johnbernadis93@gmail.com"
-        university:
-          type: string
-          example: "University of Bath"
+          example: "jbb93@bath.ac.uk"
         year:
           type: integer
           format: int64
