@@ -7,6 +7,7 @@ Description: >
 Globals:
   Function:
     Timeout: 20
+    MemorySize: 256
 
 Resources:
   StudentServiceFunction:
@@ -14,6 +15,7 @@ Resources:
     Properties:
       ImageUri: "studentservicefunction:java11-maven-v1"
       PackageType: "Image"
+      Role: arn:aws:iam::597624375289:role/student-service-lambda-role
       Events:
         CreateStudent:
           Type: Api

@@ -11,7 +11,7 @@ import com.igp.studentservice.util.path.PathParameters;
 
 public class StudentServiceImpl implements StudentService {
 
-    private StudentCrudDao studentCrudDao;
+    private final StudentCrudDao studentCrudDao;
 
     public StudentServiceImpl() {
         this.studentCrudDao = new StudentServiceDaoImpl();
@@ -19,7 +19,7 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public ResponseEntity<Student> createStudent(APIGatewayProxyRequestEvent event, Context context) {
-        Student student = RequestBodyReader.getAsObject(event.getBody(),Student.class);
+        Student student = RequestBodyReader.getAsObject(event.getBody(), Student.class);
         return ResponseEntity.ok(studentCrudDao.createStudent(student));
     }
 

@@ -9,11 +9,13 @@ import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapperConfig;
 
 public class DynamoDBConfig {
 
-    public static DynamoDBMapper dynamoDBMapper() {
-        AmazonDynamoDB client = AmazonDynamoDBClientBuilder.standard()
+    public static AmazonDynamoDB dynamoDB() {
+        return AmazonDynamoDBClientBuilder.standard()
                 .withCredentials(new EnvironmentVariableCredentialsProvider())
-                .withRegion(Regions.EU_WEST_2)
+                .withRegion(Regions.EU_WEST_1)
                 .build();
-        return new DynamoDBMapper(client, DynamoDBMapperConfig.DEFAULT);
+    }
+    public static DynamoDBMapper dynamoDBMapper() {
+        return new DynamoDBMapper(dynamoDB(), DynamoDBMapperConfig.DEFAULT);
     }
 }
